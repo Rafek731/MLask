@@ -27,7 +27,7 @@ namespace mlask{
         Mat& operator-=(const float_t scalar);
 
         Mat operator*(const Mat& other);
-        Mat operator*=(const Mat& other);
+        Mat& operator*=(const Mat& other);
         Mat operator*(const float_t scalar);
         Mat& operator*=(const float_t scalar);
 
@@ -41,8 +41,12 @@ namespace mlask{
         float_t& operator()(int_t row, int_t col);
         const float_t& operator()(int_t row, int_t col) const;
 
+        Mat copy();
+
         void print();
     };
+
+    void print_row(float_t *row, int_t row_len);
 }
 
 
