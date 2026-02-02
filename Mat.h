@@ -1,13 +1,19 @@
+#pragma once
+
 namespace mlask{
-    template<typename float_t, typename int_t>
+    typedef float float_t;
+    typedef int int_t;
+
     class Mat final{
     private:
         int_t rows;
         int_t cols;
-        float_t *t;
+        float_t ** const data;
 
     public:
         Mat(int_t rows, int_t cols);
+        Mat(int_t rows, int_t cols, float_t** data);
+        Mat(const Mat& mat);
         ~Mat();
 
         Mat operator+(const Mat& other);
@@ -21,6 +27,7 @@ namespace mlask{
         Mat& operator-=(const float_t scalar);
 
         Mat operator*(const Mat& other);
+        Mat operator*=(const Mat& other);
         Mat operator*(const float_t scalar);
         Mat& operator*=(const float_t scalar);
 
@@ -30,8 +37,11 @@ namespace mlask{
         bool operator==(const Mat& other);
         bool operator!=(const Mat& other);
 
-        void print();
+        bool tryGet(int_t row, int_t col, float_t& value);
+        float_t& operator()(int_t row, int_t col);
+        const float_t& operator()(int_t row, int_t col) const;
 
+        void print();
     };
 }
 
