@@ -140,7 +140,7 @@ namespace mlask{
 
     Mat& Mat::operator*=(const float_t scalar){
         float_t **row = data;                               // get first row
-        const float_t **last_row = data + rows;             // get last row
+        float_t **last_row = data + rows;             // get last row
         while(row < last_row){                              // iterate through all rows
             float_t *col = *row, *last_col = *row + cols;   // get first and last element of the row
             while(col < last_col)                           // iterate through whole row
@@ -159,7 +159,7 @@ namespace mlask{
 
     Mat& Mat::operator/=(const float_t scalar){
         float_t **row = data;                               // get first row
-        const float_t **last_row = data + rows;             // get last row
+        float_t **last_row = data + rows;             // get last row
         while(row < last_row){                              // iterate through all rows
             float_t *col = *row, *last_col = *row + cols;   // get first and last element of the row
             while(col < last_col)                           // iterate through whole row
@@ -182,7 +182,7 @@ namespace mlask{
         return result;
     }
 
-    void print_row(const float_t *row, const int_t row_len){
+    void print_row(float_t *row, int_t row_len){
         if(row_len > 15){
             for(int i=0; i < 5; i++) printf("%.3f ", row[i]);
             printf("... ");
@@ -204,13 +204,29 @@ namespace mlask{
         }
         else{
             for(int i=0; i< rows; i++)
-                print_row(data[i], rows);
+                print_row(data[i], cols);
 
         }
+    }
+    
+    inline float_t* Mat::operator[](int idx){
+        if(idx < 0 || idx >= rows) throw std::invalid_argument("Index out of bound");
+        return data[idx];
     }
 
     Mat Mat::operator*(const Mat& other){
         if(this->cols != other.rows) throw  std::invalid_argument("Cannot multiply Mats due to different inner sizes");
-        Mat result(rows, other.cols);
+        Mat result(this->rows, other.cols);
+        float_t *tmp;
+        for(int i=0; i < result.rows; i++){
+            for(int j = 0; j < result.cols; j++){
+                tmp = result[i] + j;
+                for(int k=0; k < this->cols; k++){
+                    *tmp += this->data[i][k] * other.data[k][j];
+                }
+            }
+        }
+        return result;
     }
+
 }

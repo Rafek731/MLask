@@ -40,6 +40,7 @@ namespace mlask{
         bool tryGet(int_t row, int_t col, float_t& value);
         float_t& operator()(int_t row, int_t col);
         const float_t& operator()(int_t row, int_t col) const;
+        float_t* operator[](int idx);
 
         Mat copy();
 
@@ -47,6 +48,8 @@ namespace mlask{
     };
 
     void print_row(float_t *row, int_t row_len);
+    
+    float_t dot(const float_t *r1, const float_t *r2, int n);
 }
 
 
