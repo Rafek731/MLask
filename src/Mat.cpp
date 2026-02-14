@@ -140,7 +140,7 @@ namespace mlask{
 
     Mat& Mat::operator*=(const float_t scalar){
         float_t **row = data;                               // get first row
-        float_t **last_row = data + rows;             // get last row
+        float_t **last_row = data + rows;                   // get last row
         while(row < last_row){                              // iterate through all rows
             float_t *col = *row, *last_col = *row + cols;   // get first and last element of the row
             while(col < last_col)                           // iterate through whole row
@@ -159,7 +159,7 @@ namespace mlask{
 
     Mat& Mat::operator/=(const float_t scalar){
         float_t **row = data;                               // get first row
-        float_t **last_row = data + rows;             // get last row
+        float_t **last_row = data + rows;                   // get last row
         while(row < last_row){                              // iterate through all rows
             float_t *col = *row, *last_col = *row + cols;   // get first and last element of the row
             while(col < last_col)                           // iterate through whole row
