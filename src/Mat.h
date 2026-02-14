@@ -1,5 +1,5 @@
 #pragma once
-#include "types.h"
+#include "declarations.h"
 namespace mlask {
     class Mat final {
     private:
