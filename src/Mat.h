@@ -42,7 +42,8 @@ namespace mlask {
         
         const float_t& operator()(int_t row, int_t col) const;
         float_t& operator()(int_t row, int_t col);
-        float_t* operator[](int idx);
+        float_t* operator[](int row);
+        float_t operator[](int_t row, int_t col);
         
         bool tryGet(int_t row, int_t col, float_t& value);
 
