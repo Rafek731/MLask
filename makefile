@@ -31,7 +31,7 @@ $(LIB): $(OBJECTS)
 $(TEST_OBJECTS): $(TEST_SOURCES)
 	$(CXX) $(FLAGS) -c $< -o $@
 
-$(TEST_BINARIES): $(TEST_OBJECTS)
+$(TEST_BINARIES): $(TEST_OBJECTS) $(LIB)
 	$(CXX) $(FLAGS) $^ -L./$(LIB_DIR) -l:$(LIB_NAME).a -o $@
 
 test: $(TEST_BINARIES)
