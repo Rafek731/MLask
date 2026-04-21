@@ -1,15 +1,14 @@
 #pragma once
 #include <Eigen/Core>
 #include <Eigen/Dense>
+#include "../include/types.hpp"
 
 namespace mlask {
 
-using type = float;
-
 class Layer {
   protected:
-    using vectorIn_ = Eigen::Matrix<type, Eigen::Dynamic, 1>;
-    using vectorOut_ = Eigen::Matrix<type, Eigen::Dynamic, 1>;
+    using vectorIn_ = Eigen::Matrix<float_t, Eigen::Dynamic, 1>;
+    using vectorOut_ = Eigen::Matrix<float_t, Eigen::Dynamic, 1>;
 
   public:
     virtual ~Layer() = default;

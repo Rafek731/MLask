@@ -11,7 +11,7 @@ class Model {
 
   public:
     void addLayer(std::unique_ptr<Layer> layer);
-    Eigen::Matrix<type, Eigen::Dynamic, 1> forward(Eigen::Matrix<type, Eigen::Dynamic, 1> input) const;
+    Eigen::Matrix<float_t, Eigen::Dynamic, 1> forward(Eigen::Matrix<float_t, Eigen::Dynamic, 1> input) const;
 };
 
 } // namespace mlask
