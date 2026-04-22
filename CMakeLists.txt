@@ -20,5 +20,6 @@ add_library(mlask STATIC
 )
 target_compile_features(mlask PRIVATE cxx_std_23)
 target_link_libraries(mlask PUBLIC Eigen3::Eigen)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_subdirectory(tests)

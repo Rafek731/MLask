@@ -1,7 +1,7 @@
 #pragma once
 #include <Eigen/Core>
 #include <Eigen/Dense>
-#include "../include/types.hpp"
+#include "types.hpp"
 
 namespace mlask {
 

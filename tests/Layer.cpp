@@ -1,5 +1,5 @@
-#include "../headers/Layer.hpp"
-#include "../headers/Model.hpp"
+#include "Layer.hpp"
+#include "Model.hpp"
 #include <Eigen/Core>
 #include <assert.h>
 #include <iostream>
@@ -39,6 +39,7 @@ void test_test_layer(){
     result = model.forward(input);
     input.array()+=6;
     assert(input == result);
+    std::cout<<"----PASSED----\n";
 }
 
 
@@ -55,6 +56,7 @@ void test_multi_layer(){
     result = model.forward(input);
     input.array()+=3;
     assert(input == result);
+    std::cout<<"----PASSED----\n";
 }
 void test_addition_layer(){
     std::cout<<"----Addition Layer----\n";
@@ -68,6 +70,7 @@ void test_addition_layer(){
     input << 1, 2, 3, 4;
     result = model.forward(input);
     assert(input == result);
+    std::cout<<"----PASSED----\n";
 }
 
 int main() {
